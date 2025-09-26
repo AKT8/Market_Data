@@ -1,0 +1,20 @@
+name: Nepse Data
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 3 * * 1"     # every Monday 03:00 UTC
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11" }
+      - run: |
+          pip install requests pandas numpy ta duckdb
+          python main.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nepse_data
+          path: nepse_data.duckdb
