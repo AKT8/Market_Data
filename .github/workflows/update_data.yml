@@ -41,7 +41,7 @@ jobs:
         release_name: "Data Release $(date +'%Y-%m-%d')" # Release title
         draft: false
         prerelease: false
-        token: ${{ secrets.GITHUB_TOKEN }}
+        
 
     # Step 6: Upload the data.duckdb file
     - name: Upload data.duckdb to Release
