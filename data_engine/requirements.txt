@@ -1,0 +1,8 @@
+requests
+pandas
+numpy
+ta
+duckdb
+sys
+time
+tabulate
