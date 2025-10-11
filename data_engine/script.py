@@ -1,6 +1,6 @@
 
 import requests, pandas as pd, numpy as np, duckdb, sys, time, ta
-from tabulate import tabulate
+
 
 SYMBOL_API  = "https://chukul.com/api/data/symbol/"
 HIST_API    = "https://chukul.com/api/data/historydata/?symbol={}"
