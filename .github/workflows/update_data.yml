@@ -9,11 +9,6 @@ on:
 permissions:
   contents: write
 
-on:
-  push:
-    branches:
-      - main
-
 jobs:
   update-and-release:
     name: Update Data and Create Release
