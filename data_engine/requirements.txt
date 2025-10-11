@@ -2,7 +2,7 @@ requests
 pandas
 numpy
 ta
-duckdb
+duckdb==1.4.1
 sys
 time
 tabulate
