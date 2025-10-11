@@ -26,11 +26,11 @@ jobs:
     - name: Install Dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install -r requirements.txt
+        pip install -r data_engine/requirements.txt
 
     # Step 4: Run the Data Engine Script
     - name: Run Data Engine Script
-      run: python script.py
+      run: python data_engine/script.py
 
     # Step 5: Create a release
     - name: Create Release
