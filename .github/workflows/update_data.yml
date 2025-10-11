@@ -1,29 +1,29 @@
-name: Update Data and Release
+name: Update Data and Release (Latest)
 
 on:
   schedule:
-    # Schedule the workflow to run Sun-Thu at 6 PM NPT (UTC +5:45)
-    - cron: "15 12 * * 0-4" # 6:00 PM NPT corresponds to 12:15 PM UTC
-  workflow_dispatch: # Allow manual triggering of the workflow
+    # Run Sunday–Thursday at 6 PM NPT (UTC+5:45 = 12:15 UTC)
+    - cron: "15 12 * * 0-4"
+  workflow_dispatch: # allow manual run
 
 permissions:
   contents: write
 
 jobs:
   update-and-release:
-    name: Update Data and Create Release
+    name: Update Data and Upload Latest Release
     runs-on: ubuntu-latest
 
     steps:
-    # Step 1: Check out the repository
+    # Step 1: Checkout repository
     - name: Checkout Repository
       uses: actions/checkout@v3
 
-    # Step 2: Set up Python environment
+    # Step 2: Set up Python
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
-        python-version: "3.11" # Use Python 3.9 or your required version
+        python-version: "3.11"
 
     # Step 3: Install dependencies
     - name: Install Dependencies
@@ -35,26 +35,35 @@ jobs:
     - name: Run Data Engine Script
       run: python data_engine/script.py
 
-    # Step 5: Create a release
-    - name: Create Release
+    # Step 5: Delete existing 'data-latest' release and tag (safe cleanup)
+    - name: Delete Existing Release (if any)
+      run: |
+        gh release delete data-latest --yes || true
+        git tag -d data-latest || true
+        git push origin :refs/tags/data-latest || true
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    # Step 6: Create new 'latest' release
+    - name: Create Latest Release
       id: create_release
       uses: actions/create-release@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
       with:
-        tag_name: "data-$(date +'%Y-%m-%d')" # Tag format: data-YYYY-MM-DD
-        release_name: "Data Release $(date +'%Y-%m-%d')" # Release title
+        tag_name: data-latest
+        release_name: "Data Release (Latest)"
+        body: "Automated daily update of data.duckdb file."
         draft: false
         prerelease: false
-        
-        
 
-    # Step 6: Upload the data.duckdb file
+    # Step 7: Upload the generated data.duckdb file
     - name: Upload data.duckdb to Release
       uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./data.duckdb # Path to data.duckdb file
+        asset_path: ./data.duckdb
         asset_name: data.duckdb
         asset_content_type: application/octet-stream
