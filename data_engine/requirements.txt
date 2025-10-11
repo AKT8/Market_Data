@@ -3,5 +3,3 @@ pandas
 numpy
 ta
 duckdb==1.4.1
-time
-tabulate
