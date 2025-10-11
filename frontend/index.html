@@ -1,1 +1,73 @@
-demo
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Market Screener</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Market Screener</h1>
+    <nav>
+      <ul>
+        <li><a href="#screener">Screener</a></li>
+        <li><a href="#filters">Filters</a></li>
+        <li><a href="#strategies">Strategies</a></li>
+        <li><a href="#performance">Performance</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="screener">
+      <h2>Stock Screener</h2>
+      <div id="screener-container">
+        <button id="fetch-data">Fetch Data</button>
+        <table id="screener-table">
+          <thead>
+            <tr>
+              <th>Symbol</th>
+              <th>Date</th>
+              <th>Open</th>
+              <th>High</th>
+              <th>Low</th>
+              <th>Close</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Data will be injected here -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="filters">
+      <h2>Filters</h2>
+      <div id="filters-container">
+        <label for="symbol-filter">Symbol:</label>
+        <input type="text" id="symbol-filter" placeholder="Enter symbol">
+        <label for="date-filter">Date:</label>
+        <input type="date" id="date-filter">
+        <button id="apply-filters">Apply Filters</button>
+      </div>
+    </section>
+
+    <section id="strategies">
+      <h2>Strategies</h2>
+      <p>Backend strategies and calculations will be integrated here.</p>
+    </section>
+
+    <section id="performance">
+      <h2>Portfolio Performance</h2>
+      <p>Performance metrics will be displayed here.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Market Screener</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
