@@ -1,4 +1,4 @@
-Market_Data is a personalized stock trading webpage(terminal) for screening, watchlisting, developing strategies, backtesting, portfolio tracking, signals/alerts/news,etc.
+Market_Data is a personalized stock trading webpage(terminal) https://akt8.github.io/Market_Data/ for screening, watchlisting, developing strategies, backtesting, portfolio tracking, signals/alerts/news,etc.
 
 data_engine helps to provide the necessary parameters and market data in a data.duckdb file as a latest release.
 
