@@ -6,12 +6,12 @@ let screenerData = []; // Stores the fetched data
 async function fetchData() {
   try {
     // Dynamically import DuckDB-WASM from CDN
-    const duckdb = await import('https://cdn.jsdelivr.net/npm/@duckdb/duckdb-wasm@1.28.0/dist/duckdb-esm.js');
-
+    const duckdb = await import('https://cdn.jsdelivr.net/npm/@duckdb/duckdb-wasm@latest/dist/duckdb-esm/duckdb-esm.js');
+    
     // Select the appropriate bundle for your browser
     const JSDELIVR_BUNDLES = duckdb.getJsDelivrBundles();
     const bundle = await duckdb.selectBundle(JSDELIVR_BUNDLES);
-
+    
     // Start the DuckDB worker
     const worker = new Worker(bundle.mainWorker);
     const db = new duckdb.AsyncDuckDB(new duckdb.ConsoleLogger(), worker);
