@@ -31,7 +31,7 @@ async function fetchData() {
 
     // Query the database
     // Replace `my_table` with your actual table name inside the DuckDB file
-    const result = await conn.query("SELECT * FROM data.my_table LIMIT 500;");
+    const result = await conn.query("SELECT * FROM data.PHCL LIMIT 500;");
     const rows = result.toArray().map(Object.fromEntries);
 
     // Store and populate table
