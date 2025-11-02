@@ -18,7 +18,7 @@ async function fetchData() {
     await db.instantiate(bundle.mainModule, bundle.pthreadWorker);
 
     // Fetch the .duckdb file from GitHub Releases
-    const response = await fetch(DUCKDB_URL);
+    const response = await import(DUCKDB_URL);
     if (!response.ok) throw new Error(`Error fetching file: ${response.statusText}`);
 
     const arrayBuffer = await response.arrayBuffer();
