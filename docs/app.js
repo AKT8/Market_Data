@@ -1,5 +1,5 @@
 // Global variables
-const API_ENDPOINT = 'https://your-backend-endpoint.com/data'; // Replace with your actual endpoint
+const API_ENDPOINT = 'https://github.com/AKT8/Market_Data/releases/download/data-latest/data.duckdb'; // Replace with your actual endpoint
 let screenerData = []; // Stores the fetched data
 
 // Fetch data from the backend (data.duckdb)
